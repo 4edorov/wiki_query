@@ -140,7 +140,7 @@ new Vue({
 
 new Vue({
 	data: function () {
-		return { hi: 'V' }
+		return { hi: 'Hello' }
 	},
 	components: {
 	  component: {
@@ -195,6 +195,8 @@ Vue.component('currency-input', {
 		}
 	}
 });
+
+
 
 new Vue({
 	el: '#app-11',
