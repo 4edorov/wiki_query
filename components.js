@@ -196,8 +196,6 @@ Vue.component('currency-input', {
 	}
 });
 
-
-
 new Vue({
 	el: '#app-11',
 	data: {
@@ -210,5 +208,12 @@ new Vue({
 		total: function () {
 			return ((this.price * 100 + this.shipping * 100 + this.handling * 100 - this.discount * 100) / 100).toFixed(2)
 		}
+	}
+});
+
+new Vue({
+	el: `#example-1`,
+	data: {
+		show: false
 	}
 });

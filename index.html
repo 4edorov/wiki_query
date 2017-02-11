@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
     <script src="https://cdn.rawgit.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e/raw/98739fb8ac6779cb2da11aaa9ab6032e52f3be00/currency-validator.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
 
@@ -77,6 +78,15 @@
         <currency-input label="Discount" v-model="discount"></currency-input>
 
         <p>Total mount: ${{ total }}</p>
+    </div>
+
+    <div id="example-1">
+        <button @click="show = !show">
+            Switch rendering
+        </button>
+        <transition name="slide-fade">
+            <p v-if="show">Hello Vue.js!</p>
+        </transition>
     </div>
 
     <script src="components.js"></script>
