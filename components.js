@@ -10,7 +10,7 @@ let app2;
 app2 = new Vue({
   el: `#app-2`,
   data: {
-    message: 'You load this page at: ' + new Date()
+    message: '3-changes You load this page at: ' + new Date()
   }
 });
 
