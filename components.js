@@ -196,6 +196,8 @@ Vue.component('currency-input', {
 	}
 });
 
+
+
 new Vue({
 	el: '#app-11',
 	data: {
