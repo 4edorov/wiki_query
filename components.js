@@ -210,3 +210,12 @@ new Vue({
 		}
 	}
 });
+
+Vue.directive('focus', {
+	inserted: function (el) {
+		el.focus()
+	}
+});
+new Vue({
+	el: `#focus`,
+});
