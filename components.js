@@ -219,3 +219,25 @@ Vue.directive('focus', {
 new Vue({
 	el: `#focus`,
 });
+
+const NotFound = { template: `<p>Page not found</p>` }
+const Home = { template: `<p>Main</p>` }
+const About = { template: `<p>About us</p>` }
+
+const routes = {
+  `/`: Home,
+  `/about`: About
+}
+
+new Vue({
+  el: `#app-router`,
+  data: {
+    currentRoute: window.location.pathname
+  },
+  computed: {
+    ViewComponent () {
+      return routes[this.currentRoute] || NotFound
+    }
+  },
+  render (h) { return h(this.ViewComponent) }
+});
