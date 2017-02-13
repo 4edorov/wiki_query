@@ -5,15 +5,43 @@
       <a href="https://github.com/4edorov/wiki_query">View on Github <i class="fa fa-github"></i></a>
     </div>
     <vform inline-template action="#" method="GET" v-ref:form>
+
       <h1>Country search sample</h1>
+
       Provided by: <a href="#">#</a>
+
       <p>
         <div><b>Alpha code 2</b></div>
+
         <input-handler :response="response" validations="required|min:2|max:2" listen="codes">
+
           <input type="text" v-model="request.codes" @keyup.enter="submit" placeholder="i.e. us or uk"/>
         </input-handler>
 
+        <input type="checkbox" v-model="request.clearOnFetch" value="1" checked/> Clear results on submit?
       </p>
+
+      <div v-if="request.codes">
+        <button @click="submit">
+          Submit
+        </button>
+        <span v-if="isLoading"> Loading...</span>
+      </div>
+
+      <results inline-template :model="response" :clear-on-fetch="request.clearOnFetch" v-ref:results>
+        <div v-show="hasRecords">
+          <hr>
+          <div v-for="country in records" track-by="$index">
+            <b>{{country.name}}</b>
+            <i>Capital: {{country.capital}} | {{country.alpha2Code}} | {{country.region}}</i>
+          </div>
+        </div>
+      </results>
     </vform>
+
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script src="vueform.js"></script>
+
   </body>
 </html>
