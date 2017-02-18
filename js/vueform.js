@@ -17,24 +17,20 @@ Vue.component('wiki-search', {
       </div>
       <div class="container">
         <div id="wrap">
-          <form action="" autocomplete="on">
-            <input id="search" v-model="search" v-on:keyup.enter="onEnter" type="text" placeholder="What're we looking for?">
-            <input id="search_submit" value="" type="submit">
-          </form>
+          <input id="search" v-model="search" type="text" placeholder="What're we looking for?">
+          <input id="search_submit" type="submit" v-on:keyup.enter="startSearch()">
         </div>
       </div>
     </div>
   `,
-});
-let wikiSearch = new Vue({
-  el: '#wikiSearch',
-  /*props: ['search'],*/
-  data: {
-    search: ''
+  data: function () {
+    return {
+      search: ''
+    }
   },
   methods: {
-    onEnter: function() {
-      this.$http.get('https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json', {
+    startSearch() {
+      this.$http.get('https://en.wikipedia.org/w/api.php?action=opensearch&search=' + this.search + 'api&limit=10&namespace=0&format=json', {
         headers: {
           'Api-User-Agent': 'Example/1.0'
         }
@@ -45,6 +41,9 @@ let wikiSearch = new Vue({
       });
     }
   }
+});
+let wikiSearch = new Vue({
+  el: '#wikiSearch'
 });
 
 Vue.component('random-search', {
