@@ -11,21 +11,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="container-fluid">
-    <a href="https://github.com/4edorov/wiki_query">View on Github <i class="fa fa-github fa-lg"></i></a>
+
+  <div id="gitHubRef">
+    <git-hub-ref/>
   </div>
+
   <div class="container text-center">
-    <div class="container">
-      <h2>Wikipedia Search</h2>
+
+    <div id="wikiSearch">
+      <wiki-search/>
     </div>
-    <div class="container">
-      <div id="wrap">
-        <form action="" autocomplete="on">
-          <input id="search" name="search" type="text" placeholder="What're we looking for?">
-          <input id="search_submit" value="" type="submit">
-        </form>
-      </div>
-    </div>
+
     <div id="randomSearch">
       <random-search/>
     </div>
