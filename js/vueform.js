@@ -6,7 +6,6 @@ Vue.component('random-search', {
       </a>  
     </div>
   `,
-  props: ['randomWikiArticle'],
   computed: {
     randomWikiArticle() {
       return 'https://en.wikipedia.org/wiki/Special:Random'
