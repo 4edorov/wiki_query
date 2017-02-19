@@ -1,7 +1,8 @@
 Vue.component('git-hub-ref', {
   template: `
     <div class="container-fluid">
-      <a href="https://github.com/4edorov/wiki_query"> View on Github <i class="fa fa-github fa-lg"> </i></a>
+      <a href="https://github.com/4edorov/wiki_query"> View on Github <i class="fa fa-github fa-lg"></i></a>
+      <a href="https://vuejs.org/"> Made with amazing Vue.js <i class="fa fa-hand-peace-o fa-lg"></i></a>
     </div>
   `
 });
@@ -20,9 +21,14 @@ Vue.component('wiki-search', {
       </div>
       <div v-if="responseData">
       <h3>Results for search "{{ responseData[0] }}"</h3>
-      <ul>
-        <li v-for="item in responseData[1]">
-          <p>{{ item }}</p>
+      <ul class="list-group">
+        <li class="list-group-item" v-for="(item, index) in responseData[1]">
+          <a :href="responseData[3][index]" target="blank">
+            <div class="panel panel-info">
+              <div class="panel-heading text-left"><p>{{ item }}</p></div>
+              <div class="panel-body text-justify"><p>{{ responseData[2][index] }}</p></div>
+            </div>  
+          </a>
         </li>
       </ul>
     </div>
