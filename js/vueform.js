@@ -13,31 +13,36 @@ Vue.component('wiki-search', {
   template: `
     <div>
       <div class="container">
-        <h2>Wikipedia Search</h2>
-      </div>
-      <div class="container">
         <div id="wrap">
-          <input id="search" v-model="search" type="text" placeholder="What're we looking for?">
-          <input id="search_submit" type="submit" v-on:keyup.enter="startSearch()">
+          <input id="search" v-model="search" v-on:keyup.enter="startSearch()" type="text" placeholder="What're we looking for?">
+          <input id="search_submit" type="submit">
         </div>
       </div>
+      <div v-if="responseData">
+      <h3>Results for search "{{ responseData[0] }}"</h3>
+      <ul>
+        <li v-for="item in responseData[1]">
+          <p>{{ item }}</p>
+        </li>
+      </ul>
     </div>
   `,
   data: function () {
     return {
-      search: ''
+      search: '',
+      responseData: ''
     }
   },
   methods: {
     startSearch() {
-      this.$http.get('https://en.wikipedia.org/w/api.php?action=opensearch&search=' + this.search + 'api&limit=10&namespace=0&format=json', {
-        headers: {
-          'Api-User-Agent': 'Example/1.0'
-        }
-      }).then(response => {
-        this.resData = response.body
-      }, response => {
-
+      this.$http.get('https://en.wikipedia.org/w/api.php?action=opensearch&search=' + this.search + '&limit=10&namespace=0&format=json&origin=*')
+        .then(response => {
+          if (response.ok) {
+            this.responseData = response.body;
+          }
+          console.log(this.responseData);
+        }, response => {
+            this.alert('there was an error with this ajax request');
       });
     }
   }
@@ -49,6 +54,9 @@ let wikiSearch = new Vue({
 Vue.component('random-search', {
   template: `
     <div class="container">
+      <div class="container">
+        <h2>Wikipedia Search</h2>
+      </div>
       <a :href="randomWikiArticle">
         <button type="button" class="btn btn-default"><i class="fa fa-random"></i> Random Search</button>
       </a>  
