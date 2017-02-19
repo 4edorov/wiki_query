@@ -1,47 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <body id="app">
-    <div class="breadcrumb">
-      <a href="https://github.com/4edorov/wiki_query">View on Github <i class="fa fa-github"></i></a>
+<html lang="en">
+<head>
+  <title>Wiki Query</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://use.fontawesome.com/a8788164fa.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <div id="gitHubRef">
+    <git-hub-ref/>
+  </div>
+
+  <div class="container text-center">
+
+    <div id="randomSearch">
+      <random-search/>
     </div>
-    <vform inline-template action="#" method="GET" v-ref:form>
 
-      <h1>Country search sample</h1>
+    <div id="wikiSearch">
+      <wiki-search/>
+    </div>
 
-      Provided by: <a href="#">#</a>
+  </div>
 
-      <p>
-        <div><b>Alpha code 2</b></div>
-
-        <input-handler :response="response" validations="required|min:2|max:2" listen="codes">
-
-          <input type="text" v-model="request.codes" @keyup.enter="submit" placeholder="i.e. us or uk"/>
-        </input-handler>
-
-        <input type="checkbox" v-model="request.clearOnFetch" value="1" checked/> Clear results on submit?
-      </p>
-
-      <div v-if="request.codes">
-        <button @click="submit">
-          Submit
-        </button>
-        <span v-if="isLoading"> Loading...</span>
-      </div>
-
-      <results inline-template :model="response" :clear-on-fetch="request.clearOnFetch" v-ref:results>
-        <div v-show="hasRecords">
-          <hr>
-          <div v-for="country in records" track-by="$index">
-            <b>{{country.name}}</b>
-            <i>Capital: {{country.capital}} | {{country.alpha2Code}} | {{country.region}}</i>
-          </div>
-        </div>
-      </results>
-    </vform>
-
-    <script src="vue.js"></script>
-    <script src="vue-resource.js"></script>
-    <script src="vueform.js"></script>
-
-  </body>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-resource.js"></script>
+  <script src="js/vueform.js"></script>
+</body>
 </html>
