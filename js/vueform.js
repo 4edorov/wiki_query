@@ -1,8 +1,8 @@
 Vue.component('git-hub-ref', {
   template: `
-    <div class="container-fluid">
+    <div class="container-fluid header-line">
       <a href="https://github.com/4edorov/wiki_query"> View on Github <i class="fa fa-github fa-lg"></i></a>
-      <a href="https://vuejs.org/"> Made with amazing Vue.js <i class="fa fa-hand-peace-o fa-lg"></i></a>
+      <a class="header-line-right" href="https://vuejs.org/"> Made with amazing Vue.js <i class="fa fa-hand-peace-o fa-lg"></i></a>
     </div>
   `
 });
@@ -59,11 +59,11 @@ let wikiSearch = new Vue({
 
 Vue.component('random-search', {
   template: `
-    <div class="container">
-      <div class="container">
+    <div class="name-page">
+      <div class="name-page">
         <h2>Wikipedia Search</h2>
       </div>
-      <a :href="randomWikiArticle">
+      <a class="name-page" target="blank" :href="randomWikiArticle">
         <button type="button" class="btn btn-default"><i class="fa fa-random"></i> Random Search</button>
       </a>  
     </div>
