@@ -13,20 +13,17 @@ let gitHubRef = new Vue({
 Vue.component('wiki-search', {
   template: `
     <div>
-      <div class="container">
-        <div id="wrap">
-          <input id="search" v-model="search" v-on:keyup.enter="startSearch()" type="text" placeholder="What're we looking for?">
-          <input id="search_submit" type="submit">
-        </div>
+      <div>
+        <input class="input-lg search-part" id="search" v-model="search" v-on:keyup.enter="startSearch()" type="text" placeholder="Search..">
       </div>
-      <div v-if="responseData">
+      <div class="results-part" v-if="responseData">
       <h3>Results for search "{{ responseData[0] }}"</h3>
       <ul class="list-group">
-        <li class="list-group-item" v-for="(item, index) in responseData[1]">
+        <li class="list-group-item thin" v-for="(item, index) in responseData[1]">
           <a :href="responseData[3][index]" target="blank">
-            <div class="panel panel-info">
-              <div class="panel-heading text-left"><p>{{ item }}</p></div>
-              <div class="panel-body text-justify"><p>{{ responseData[2][index] }}</p></div>
+            <div class="panel panel-info thin">
+              <div class="panel-heading text-left thin"><p>{{ item }}</p></div>
+              <div class="panel-body text-justify thin"><p>{{ responseData[2][index] }}</p></div>
             </div>  
           </a>
         </li>
@@ -64,7 +61,7 @@ Vue.component('random-search', {
         <h2>Wikipedia Search</h2>
       </div>
       <a class="name-page" target="blank" :href="randomWikiArticle">
-        <button type="button" class="btn btn-default"><i class="fa fa-random"></i> Random Search</button>
+        <button type="button" class="btn btn-info"><i class="fa fa-random"></i> Random Search</button>
       </a>  
     </div>
   `,
