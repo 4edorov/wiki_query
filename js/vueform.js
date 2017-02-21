@@ -13,8 +13,8 @@ let gitHubRef = new Vue({
 Vue.component('wiki-search', {
   template: `
     <div>
-      <div>
-        <input class="input-lg search-part" id="search" v-model="search" v-on:keyup.enter="startSearch()" type="text" placeholder="Search..">
+      <div class="search-part">
+        <input class="input-lg" id="search" v-model="search" v-on:keyup.enter="startSearch()" type="text" placeholder="Search..">
       </div>
       <div class="results-part" v-if="responseData">
       <h3>Results for search "{{ responseData[0] }}"</h3>
@@ -22,8 +22,8 @@ Vue.component('wiki-search', {
         <li class="list-group-item thin" v-for="(item, index) in responseData[1]">
           <a :href="responseData[3][index]" target="blank">
             <div class="panel panel-info thin">
-              <div class="panel-heading text-left thin"><p>{{ item }}</p></div>
-              <div class="panel-body text-justify thin"><p>{{ responseData[2][index] }}</p></div>
+              <div class="panel-heading text-left thin"><p class="thin">{{ item }}</p></div>
+              <div class="panel-body text-justify thin"><p class="thin">{{ responseData[2][index] }}</p></div>
             </div>  
           </a>
         </li>
