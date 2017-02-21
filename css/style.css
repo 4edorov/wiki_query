@@ -7,6 +7,7 @@
 /* When the input field gets focus, change its width to 100% */
 input[type=text]:focus {
     width: 100%;
+    positin: relative;
 }
 
 .header-line {
@@ -32,10 +33,15 @@ html, body {
     height: 100%;
 }
 
+.search-part {
+    margin: 0px 75px 0px 75px;
+}
+
 .results-part {
     display: inline-block;
 }
 
 .thin {
     padding: 3px;
+    margin-bottom: 0px;
 }
